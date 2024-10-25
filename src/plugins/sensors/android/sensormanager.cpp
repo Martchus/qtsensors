@@ -90,7 +90,7 @@ void SensorManager::run()
     m_looper = ALooper_prepare(0);
     m_waitForStart.release();
     do {
-        if (ALooper_pollAll(5 /*ms*/, nullptr, nullptr, nullptr) == ALOOPER_POLL_TIMEOUT)
+        if (ALooper_pollOnce(5 /*ms*/, nullptr, nullptr, nullptr) == ALOOPER_POLL_TIMEOUT)
             QThread::yieldCurrentThread();
     } while (!m_quit.loadRelaxed());
 }
